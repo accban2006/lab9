@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         String token = tokenProvider.generateToken(authentication);
         
         // Get user details
-        User user = userRepository.findByUsername(loginRequest.getUsername())
+        User user = UserRepository.findByUsername(loginRequest.getUsername())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         
         return new LoginResponseDTO(
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public UserResponseDTO getCurrentUser(String username) {
-        User user = userRepository.findByUsername(username)
+        User user = UserRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         
         return convertToDTO(user);
@@ -103,5 +103,41 @@ public class UserServiceImpl implements UserService {
             user.getIsActive(),
             user.getCreatedAt()
         );
+    }
+
+    @Override
+    public void changePassword(String username, ChangePasswordDTO dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'changePassword'");
+    }
+
+    @Override
+    public void deleteAccount(String name, String password) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteAccount'");
+    }
+
+    @Override
+    public Object updateProfile(String name, UpdateProfileDTO dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateProfile'");
+    }
+
+    @Override
+    public Object toggleUserStatus(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toggleUserStatus'");
+    }
+
+    @Override
+    public Object getAllUsers() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllUsers'");
+    }
+
+    @Override
+    public Object updateUserRole(Long id, UpdateRoleDTO dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateUserRole'");
     }
 }

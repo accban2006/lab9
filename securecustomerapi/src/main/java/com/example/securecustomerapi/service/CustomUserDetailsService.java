@@ -17,11 +17,11 @@ import java.util.Collections;
 public class CustomUserDetailsService implements UserDetailsService {
     
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository UserRepository;
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        User user = com.example.securecustomerapi.repository.UserRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
         
         return new org.springframework.security.core.userdetails.User(
